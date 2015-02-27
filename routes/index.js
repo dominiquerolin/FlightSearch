@@ -1,6 +1,6 @@
 var express = require('express'),
 fs = require('fs'),
-searchFlights = require('searchFlights');
+searchFlights = require('../node_modules/searchFlights');
 var router = express.Router();
 
 /* GET home page. */
