@@ -1,0 +1,18 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel="stylesheet",type="text/css",href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css",media="all")
+		script(type="text/javascript",src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+		script(type="text/javascript",src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js")
+		script(src='/javascripts/form.js')
+	body
+		div(id="wrapper")
+			div(id="header")
+				h1= "Flight Search Engine"
+			div(id="body")
+				div(id="left")
+					include ./sidebar.jade
+				div(id="right")
+					block content

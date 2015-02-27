@@ -1,0 +1,36 @@
+extends layout
+
+block content
+	div(id="title")
+		h2 Your results
+		span(id="recap")
+			| Depart: #{req.date_from}
+
+	div(id="results")
+		for flight in flights
+			div(class="row #{flight.price}")
+				div(class="cell flight")
+					ul
+						li 
+							| #{flight.number}
+						li 
+							strong #{req.from} > #{req.to}
+						li 
+							| Depart: #{flight.departure_time}
+						li 
+							| Arrive: #{flight.arrival_time} 
+							if flight.arrival_date!=flight.departure_date
+								| (+1d)
+				
+				div(class="cell flight")
+				div(class="cell price")
+					if req.passengers>1
+						h2 #{flight.price*req.passengers} AUD 
+						span (#{flight.price} AUD pp)
+					else
+						h2 #{flight.price} AUD
+						
+				div(class="cell")
+					button Select this flight
+		else
+			li No flights found

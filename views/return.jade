@@ -1,0 +1,52 @@
+extends layout
+
+block content
+	div(id="title")
+		h2 Your results
+		span(id="recap")
+			| Depart: #{req.date_from}
+			<br/>
+			| Return: #{req.date_back}
+
+	div(id="results")
+		for flight in flights
+			div(class="row #{flight.price}")
+				div(class="cell flight")
+					ul
+						li 
+							| #{flight.from.number}
+						li 
+							strong #{req.from} > #{req.to}
+						li 
+							| Depart: #{flight.from.departure_time}
+						li 
+							| Arrive: #{flight.from.arrival_time} 
+							if flight.from.arrival_date!=flight.from.departure_date
+								| (+1d)
+							
+				
+				div(class="cell flight")
+					ul
+						li 
+							| #{flight.back.number}
+						li 
+							strong #{req.to} > #{req.from}
+						li 
+							| Depart: #{flight.back.departure_time}
+						li 
+							| Arrive: #{flight.back.arrival_time} 
+							if flight.back.arrival_date!=flight.back.departure_date
+								| (+1d)
+				
+								
+				div(class="cell price")
+					if req.passengers>1
+						h2 #{flight.price*req.passengers} AUD 
+						span (#{flight.price} AUD pp)
+					else
+						h2 #{flight.price} AUD
+						
+				div(class="cell")
+					button Select this flight
+		else
+			li No flights found

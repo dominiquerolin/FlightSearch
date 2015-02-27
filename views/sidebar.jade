@@ -1,0 +1,49 @@
+div(id="search_form")
+	script.
+		initForm ()
+		
+	-var airports={"SYD":"Sydney","MEL":"Melbourne","BNE":"Brisbane","PER":"Perth","ADL":"Adelaide","HBA":"Hobart","DRW":"Darwin"}
+		
+	form(action="/", method="POST", name="search", id="search")
+		div(id="tabs")
+			div(class="tab")
+				input(type="radio",id="return_trip_0",name="return_trip", value="0", checked=(!req || req.return_trip==0), onclick="$('#date_back').hide();$('#l_date_back').hide()")
+				label(for="return_trip_0",id="l_return_trip_0") One way
+			div(class="tab")
+				input(type="radio",id="return_trip_1",name="return_trip", value="1", checked=(req && req.return_trip==1), onclick="$('#date_back').show();$('#l_date_back').show()")
+				label(for="return_trip_1",id="l_return_trip_1") Return
+
+		div(id="fields")
+			label From:
+			select(id="from",name="from", onchange="updateDest()")
+				option(value="")= "-- Select --"
+				each name,code in airports
+					option(value=code, selected=(req && req.from==code))= name
+							
+			label To:
+			select(id="to",name="to", disabled=!req)
+				option(value="")= "-- Select --"
+				if req
+					each name,code in airports
+						if req.from!=code
+							option(value=code, selected=(req.to==code))= name
+			
+			label Departure date:
+			input(type="text",id="date_from",name="date_from", value=req?req.date_from:'')
+			
+			label(id="l_date_back") Return date:
+			input(type="text",id="date_back",name="date_back", value=req?req.date_back:'')
+				
+			label Passengers:
+			select(id="passengers",name="passengers")
+				each i in [1,2,3,4,5,6]
+					option(selected=(req && req.passengers==i))=i
+					
+			input(type="button", onclick="validateForm(document.forms.search)", value="Search")
+
+			if req
+				div(id="price_slider")
+					label Refine results by price:
+					span(id="min_price") #{min_price}
+					span(id="max_price") #{max_price}
+					div(id="slider")
