@@ -58,7 +58,15 @@ function updateReturnDate() {
 			minDate : new Date(selected)
 		});
 }
-
+function toggleReturnDate() {
+	if($("#return_trip_0").is(":checked")) {
+		$('#date_back').hide();
+		$('#l_date_back').hide();
+	} else {
+		$('#date_back').show();
+		$('#l_date_back').show();		
+	}
+}
 /**
  * Price slider init integer minPrice integer maxPrice
  */
@@ -92,30 +100,41 @@ function filterResults(minPrice, maxPrice) {
  * Form Validation object frm the html form
  */
 function validateForm(frm) {
+
+	$("span.errorspan").each(function(){ this.remove();})
+	var err = 0;
+	
+	function alertUser(el, msg) {
+		var span = document.createElement('span');
+		span.className = 'errorspan';
+		span.innerHTML = msg;
+		document.getElementById("l_"+el.id).appendChild(span);
+		err++;
+		return false;
+	}
+	
 	var now = new Date();
 	if (frm.from.value == '') {
-		alertUser('Please select a departure location.');
-	} else if (frm.to.value == '') {
-		alertUser('Please select a destination.');
-	} else if (frm.date_from.value == '') {
-		alertUser('Please select a departure date');
-	} else if ((/^\d{4}-\d{2}-\d{2}$/).test(frm.date_from.value) == false) {
-		alertUser('Please input a valid departure date');
-	} else if (frm.return_trip.checked) {
+		alertUser(frm.from, 'Mandatory field.');
+	} 
+	if (frm.to.value == '') {
+		alertUser(frm.to, 'Mandatory field.');
+	} 
+	if (frm.date_from.value == '') {
+		alertUser(frm.date_from, 'Mandatory field.');
+	} 
+	else if ((/^\d{4}-\d{2}-\d{2}$/).test(frm.date_from.value) == false
+			|| new Date(frm.date_from.value) < now ) {
+		alertUser(frm.date_from, 'Invalid date.');
+	} 
+	if (frm.return_trip_1.checked) {
 		if (frm.date_back.value == '') {
-			alertUser('Please select a return date');
-		} else if (frm.return_trip.checked
-				&& (/^\d{4}-\d{2}-\d{2}$/).test(frm.date_back.value) == false) {
-			alertUser('Please input a valid return date');
-		} else if (new Date(frm.date_from.value) < now) {
-			alertUser('Departure date cannot be in the past');
-		} else if (new Date(frm.date_from.value) > new Date(frm.date_back.value)) {
-			alertUser('Departure date cannot occur after return date');
-		} else
-			frm.submit();
-	} else
+			alertUser(frm.date_back, 'Mandatory field.');
+		} else if ((/^\d{4}-\d{2}-\d{2}$/).test(frm.date_back.value) == false
+				||  new Date(frm.date_from.value) >  new Date(frm.date_back.value)) {
+			alertUser(frm.date_back, 'Invalid date.');
+		}
+	}
+	if(err == 0)
 		frm.submit();
-}
-function alertUser(msg) {
-	alert(msg);
 }

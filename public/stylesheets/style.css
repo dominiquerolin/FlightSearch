@@ -97,12 +97,21 @@ div#fields label, div#price_slider label {
 				display: block;
 				margin-bottom: 5px;
 }
-
+div#fields label span.errorspan {
+	display:block;
+	color:red;
+}
 div#fields input[type="text"], div#fields select, div#fields input[type="button"]
 				{
 				margin: 0 0 15px;
 				width: 160px;
 				cursor: pointer;
+}
+
+div#ui-datepicker-div {
+				font-size: 10px;
+				line-height: 12px;
+				width: 158px;
 }
 
 div#price_slider {
