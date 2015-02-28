@@ -12,7 +12,7 @@ function getFlightNum() {
 }
 
 var fs = require("fs"),
-    airports = JSON.parse(fs.readFileSync('../public/javascripts/airports.json','utf-8')),
+    airports = {"SYD":"Sydney","MEL":"Melbourne","BNE":"Brisbane","PER":"Perth","ADL":"Adelaide","HBA":"Hobart","DRW":"Darwin"},
     flights = [],
     dailyFlightsPerRoute = 3,
     maxDaysAhead = 90;
