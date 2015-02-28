@@ -63,6 +63,7 @@ function toggleReturnDate() {
 		$('#date_back').hide();
 		$('#l_date_back').hide();
 	} else {
+		$('#date_back').val("");
 		$('#date_back').show();
 		$('#l_date_back').show();		
 	}
