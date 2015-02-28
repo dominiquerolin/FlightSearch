@@ -1,114 +1,203 @@
-/* block positioning */
-html, body {
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    font: normal 11px Verdana;
+/* CSS Document */
+body {
+				margin: 0px;
+				padding: 0px;
+				background: url(../images/mainbg.gif) 0 0 repeat-x #F6F4E4;
+				color: #6B6854;
+				font: 12px/16px "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
-/* IE7 Fix */
-* html #wrapper {
-    display: table;
-    height: 100%
+div, p, ul, h1, h2, h4, img, form, label {
+				padding: 0px;
+				margin: 0px;
 }
 
-/* Opera Fix */
-body:before {
-    content: "";
-    height: 100%;
-    float: left;
-    width: 0;
-    margin-top: -32767px;
+ul {
+				list-style-type: none;
 }
 
-div#wrapper {
-    height: 100%;
-    height: auto !important;
-    min-height: 100%;
-    width:960px;
-    margin:auto;
-    border:1px solid black;
+/*----MAIN PANEL----*/
+#mainPan {
+				width: 960px;
+				position: relative;
+				margin: 0 auto;
+				padding: 0px;
+}
+/*----Left Panel----*/
+#leftPan {
+				width: 240px;
+				float: left;
 }
 
-
-div#header {
-    height: 50px;
-    background: #cc1846;
-    border-bottom: 1px solid #fff;
-    padding: 10px;
+#leftTopPan {
+				width: 240px;
+				height: 125px;
+				position: relative;
+				margin: 0 auto;
+				padding: 0;
+				background: url(../images/left-top.jpg) 0 0 no-repeat;
 }
 
-div#body {
-    overflow: hidden;
-    height: 100%;
+#leftTopPan img {
+				width: 160px;
+				height: 39px;
+				margin: 30px 0 0 37px;
 }
 
-div#right {
-    margin: 0px 0px 0px 240px;
-    padding: 20px;
+#leftTopPan h1 {
+				padding: 40px 0 0 30px;
 }
 
-div#left {
-    width: 200px;
-    float: left;
-    padding: 20px;
-    background:#ccc;
-    min-height:600px;
+#leftBottomPan {
+				background: url(../images/menu-bg.jpg) 0 0 no-repeat;
+				padding: 30px;
 }
 
-
-
-/* elements positioning */
-div#left label, div#price_slider label { display:block; margin-bottom:5px; }
-div#left input[type="text"], div#left select, div#left input[type="button"] { margin: 0 0 15px; width:160px; cursor:pointer;} 
-
-div#price_slider { height:80px;margin-top:15px;}
-div#price_slider span#max_price {float:right;margin-right:20px;}
-div#price_slider div#slider {margin-top:5px; width:155px;}
-div#price_slider div#slider .ui-slider-handle {cursor:pointer;}
-
-div#right div#title h2 {margin:0;}
-div#right div#title span#recap {float:right;}
-div#right div#title {height:50px;}
-
-div.row {  height:70px; border:1px solid grey;margin-bottom:5px;}
-div.row div.cell { height:100%; float:left;width:20%;margin:0 15px;}
-div.row div.cell ul {
-    list-style-type: none;
-    text-indent:-40px;
-}
-div.row div.price h2 { margin:25px 20px 0 0; }
-div.row div button { margin-top:20px; width:100%;height:30px; }
-
-
-/** tabs **/
-div#fields { 
-  border: 1px solid #ccc; 
-  padding: 10px 0 0 15px;
-  background:#fff;
-}
 div#tabs {
-  position: relative;
-  clear: both;
-  height:35px;
+				position: relative;
+				clear: both;
+				height: 27px;
 }
+
 div#tabs div.tab {
-  float: left;
+				float: left;
 }
+
 div#tabs div.tab label {
-  background: #eee; 
-  padding: 10px; 
-  border: 1px solid #ccc; 
-  margin-left: -1px; 
-  position: relative;
-  left: 1px; 
-  cursor:pointer;
+				background: #eee;
+				padding: 10px;
+				border: 1px solid #ccc;
+				border-radius: 0 10px 0 0;
+				margin-left: -1px;
+				position: relative;
+				left: 1px;
+				cursor: pointer;
+				width: 69px;
+				height: 15px;
+				display: block;
 }
+
 div#tabs div.tab [type=radio] {
-  display: none;   
+				display: none;
 }
 
 div#tabs div [type=radio]:checked ~ label {
-  background: white;
-  border-bottom: 1px solid white;
+				background: white;
+				border-bottom: 1px solid white;
+}
+
+div#fields {
+				border: 1px solid #ccc;
+				background: #fff;
+				padding: 15px 5px;
+				width: 169px;
+}
+
+div#fields label, div#price_slider label {
+				display: block;
+				margin-bottom: 5px;
+}
+
+div#fields input[type="text"], div#fields select, div#fields input[type="button"]
+				{
+				margin: 0 0 15px;
+				width: 160px;
+				cursor: pointer;
+}
+
+div#price_slider {
+				height: 80px;
+				margin-top: 15px;
+				padding: 10px;
+}
+
+div#price_slider span#max_price {
+				float: right;
+}
+
+div#price_slider div#slider {
+				margin-top: 5px;
+				width: 145px;
+}
+
+div#price_slider div#slider .ui-slider-handle {
+				cursor: pointer;
+}
+
+/*----/Left Panel----*/
+
+/*----Right Panel----*/
+#rightPan {
+				width: 651px;
+				float: left;
+}
+
+#rightTopPan {
+				width: 438px;
+				height: 160px;
+				background: url(../images/header.jpg) 0 0 no-repeat #D33F9F;
+}
+
+#rightBottomPan {
+				padding: 30px;
+}
+
+div#rightBottomPan div#title h2 {
+				margin: 0;
+}
+
+div#rightBottomPan div#title span#recap {
+				float: right;
+}
+
+div#rightBottomPan div#title {
+				height: 50px;
+}
+
+div.row {
+				width: 100%;
+				height: auto;
+				border: 1px solid grey;
+				margin-bottom: 5px;
+				float: left;
+				background-color: #fff;
+}
+
+div.row div.cell {
+				height: 100%;
+				float: left;
+				width: 23%;
+				padding: 5px;
+}
+
+div.row div.cell ul {
+				list-style-type: none;
+}
+
+div.row div.price h2 {
+				margin: 25px 20px 0 0;
+}
+
+button {
+				margin-top: 15px;
+				width: 100%;
+				height: 35px;
+				text-indent: -20px;
+				background: #BB228B url(../images/arrow3.gif) 100% 7px no-repeat;
+				border: 1px solid grey;
+				border-radius: 5px;
+				color: #fff;
+				cursor: pointer;
+}
+
+/*----/Right Panel----*/
+
+/*----Footer Panel----*/
+#footermainPan {
+				background: url(../images/footerbg.gif) 0 0 repeat-x #6B6854;
+				color: #fff;
+				position: relative;
+				margin: 0 auto;
+				height: 227px;
+				clear: both;
 }

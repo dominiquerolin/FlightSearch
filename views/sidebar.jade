@@ -39,7 +39,7 @@ div(id="search_form")
 				each i in [1,2,3,4,5,6]
 					option(selected=(req && req.passengers==i))=i
 					
-			input(type="button", onclick="validateForm(document.forms.search)", value="Search")
+			button(onclick="validateForm(document.forms.search)") Search
 
 			if req
 				div(id="price_slider")

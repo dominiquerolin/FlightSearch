@@ -8,11 +8,15 @@ html
 		script(type="text/javascript",src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js")
 		script(src='/javascripts/form.js')
 	body
-		div(id="wrapper")
-			div(id="header")
-				h1= "Flight Search Engine"
-			div(id="body")
-				div(id="left")
+		div(id="mainPan")
+			div(id="leftPan")
+				div(id="leftTopPan")
+					h1 Flight Search
+				div(id="leftBottomPan")
 					include ./sidebar.jade
-				div(id="right")
+			div(id="rightPan")
+				div(id="rightTopPan")
+				div(id="rightBottomPan")
 					block content
+		div(id="footermainPan")
+			div(id="footerPan")
